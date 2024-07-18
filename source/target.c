@@ -65,15 +65,15 @@ typedef struct
   __IOM uint32_t CPACR;                  /*!< Offset: 0x088 (R/W)  Coprocessor Access Control Register */
 } Target_SCB_Type;
 
-#define CoreDebug_BASE      (0xE000EDF0UL)                            /*!< Core Debug Base Address */
-#define CoreDebug_Target           ((Target_CoreDebug_Type *)     CoreDebug_BASE)   /*!< Core Debug configuration struct */
+#define CoreDebug_BASE      (0xE000EDF0UL)                               /*!< Core Debug Base Address */
+#define CoreDebug_Target    ((Target_CoreDebug_Type *) CoreDebug_BASE)   /*!< Core Debug configuration struct */
 
 
 
-#define SCB_BASE            (SCS_BASE +  0x0D00UL)                    /*!< System Control Block Base Address */
+#define SCB_BASE            (SCS_BASE + 0x0D00UL)                        /*!< System Control Block Base Address */
 
-#define SCS_BASE            (0xE000E000UL)                            /*!< System Control Space Base Address */
-#define SCB_Target                 ((Target_SCB_Type       *)     SCB_BASE      )   /*!< SCB configuration struct */
+#define SCS_BASE            (0xE000E000UL)                               /*!< System Control Space Base Address */
+#define SCB_Target          ((Target_SCB_Type       *) SCB_BASE)         /*!< SCB configuration struct */
 
 static uint32_t target_poll(void);
 static void target_wait_reg_ready(void);

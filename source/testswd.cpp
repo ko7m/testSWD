@@ -16,6 +16,7 @@
 #include "clock_config.h"
 #include "MIMXRT1021.h"
 #include "fsl_debug_console.h"
+#include "dap.h"
 
 //#include "firmware.h"
 
@@ -26,8 +27,7 @@ typedef struct {
  } DataRecord;
 
 DataRecord records[] = {
-    {0x0000, 16, {0x60, 0x4c, 0x00, 0x20, 0x51, 0x72, 0x00, 0x00, 0xe5, 0x71, 0x00, 0x00, 0x81, 0x72, 0x00, 0x00}},
-    {0x0010, 16, {0x81, 0x72, 0x00, 0x00, 0x81, 0x72, 0x00, 0x00, 0x81, 0x72, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}},
+    {0x0000, 16, {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f}},
  };
 
 extern "C" {
@@ -67,6 +67,11 @@ int main(void) {
     nrf5_flash_init(records[0].address, (uint32_t) records[0].length);
     val = nrf5_flash_write((const uint32_t *) records[0].address, records[0].length);
     nrf5_flash_wait();
+    PRINTF("Done\n");
+
+    // Release the SWD GPIO pins so I can access part with J-Link
+    SWDIO_SET_INPUT();
+    SWCLK_SET_INPUT();
 
     /* Force the counter to be placed into memory. */
     volatile static int i = 0 ;

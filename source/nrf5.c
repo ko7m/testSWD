@@ -94,7 +94,7 @@ bool nrf5_blank_check(uint32_t addr, uint32_t nbytes) {
 
 	target_wait_halted();
 
-	return !!target_read_word(ALGO_FIFO_BASE);
+	return target_read_word(ALGO_FIFO_BASE);
 }
 
 uint32_t nrf5_crc32(uint32_t addr, uint32_t nbytes) {

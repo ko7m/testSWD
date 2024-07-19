@@ -270,7 +270,7 @@
 								<option id="com.crt.advproject.link.cpp.hdrlib.206162342" name="Library" superClass="com.crt.advproject.link.cpp.hdrlib" value="com.crt.advproject.cpp.link.hdrlib.newlibnano.nohost" valueType="enumerated"/>
 								<option id="com.crt.advproject.link.cpp.nanofloat.1583531133" name="Enable printf float " superClass="com.crt.advproject.link.cpp.nanofloat"/>
 								<option id="com.crt.advproject.link.cpp.nanofloat.scanf.683013264" name="Enable scanf float " superClass="com.crt.advproject.link.cpp.nanofloat.scanf"/>
-								<option id="com.crt.advproject.link.cpp.toram.901599225" name="Link application to RAM" superClass="com.crt.advproject.link.cpp.toram" value="true" valueType="boolean"/>
+								<option id="com.crt.advproject.link.cpp.toram.901599225" name="Link application to RAM" superClass="com.crt.advproject.link.cpp.toram" value="false" valueType="boolean"/>
 								<option id="com.crt.advproject.link.cpp.stackOffset.737650165" name="Stack offset" superClass="com.crt.advproject.link.cpp.stackOffset"/>
 								<option id="com.crt.advproject.link.cpp.multicore.empty.266954496" name="No Multicore options for this project" superClass="com.crt.advproject.link.cpp.multicore.empty"/>
 								<option id="com.crt.advproject.link.cpp.config.1072090922" name="Obsolete (Config)" superClass="com.crt.advproject.link.cpp.config"/>

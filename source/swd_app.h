@@ -7,8 +7,7 @@
  * \copyright Rode Microphones
  */
 
-#ifndef _SWD_APP_H
-#define _SWD_APP_H
+#pragma once
 
 //#include <zephyr.h>
 #include <stdlib.h>
@@ -63,4 +62,4 @@ bool swd_connect_read_test_result(void);
  ** swd_thread_create
  */
 void swd_thread_create(void);
-#endif  // _SWD_APP_H
+

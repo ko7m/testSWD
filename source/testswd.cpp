@@ -18,17 +18,17 @@
 #include "fsl_debug_console.h"
 #include "dap.h"
 
-//#include "firmware.h"
+#include "firmware.h"
 
-typedef struct {
-    uint32_t address;
-    uint8_t length;
-    uint8_t data[16];
- } DataRecord;
-
-DataRecord records[] = {
-    {0x0000, 16, {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f}},
- };
+//typedef struct {
+//    uint32_t address;
+//    uint8_t length;
+//    uint8_t data[16];
+// } DataRecord;
+//
+// __attribute__((section(".sram_oc"))) DataRecord records[] = {
+//		{0x0000, 16, {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f}}
+//};
 
 extern "C" {
 extern void swd_connect_read_test(void);
@@ -63,9 +63,16 @@ int main(void) {
     val = nrf5_blank_check(0UL, 256UL);
     PRINTF("Flash is currently %sblank\n", val ? "" : "non-");
 
-    PRINTF("Writing the first hex record to flash\n");
-    nrf5_flash_init(records[0].address, (uint32_t) records[0].length);
-    val = nrf5_flash_write((const uint32_t *) records[0].address, records[0].length);
+    PRINTF("Writing binary to flash flash\n");
+    for (int i = 0; i < sizeof(records) / sizeof(records[0]); i++) {
+    	PRINTF("%3d ", i);
+		nrf5_flash_init(records[i].address, (uint32_t) records[i].length);
+		val = nrf5_flash_write((const uint32_t *) records[i].data, records[i].length);
+		if (val != records[i].length) {
+			PRINTF("Expected to write %d, actually wrote %d\n", records[i].length, val);
+		}
+	}
+    PRINTF("\n");
     nrf5_flash_wait();
     PRINTF("Done\n");
 

@@ -134,7 +134,7 @@ void nrf5_mass_erase(void) {
 }
 
 void nrf5_flash_init(uint32_t addr, uint32_t nbytes) {
-	PRINTF("nrf5_flash_init\n");
+	//PRINTF("nrf5_flash_init\n");
 	target_write_mem(ALGO_CODE_BASE, (const uint32_t *)algo_word_copy, sizeof(algo_word_copy) / sizeof(uint32_t));
 
 	target_write_reg(ARMV7M_R0, nbytes);							// nbytes to write
@@ -158,7 +158,7 @@ uint32_t nrf5_flash_write(const uint32_t *src, uint32_t nbytes) {
 	} ring_buf;
 	uint32_t nfree;
 
-	PRINTF("nrf5_flash_write\n");
+	//PRINTF("nrf5_flash_write\n");
 
 	target_read_mem(WORKAREA_BASE, (uint32_t *)&ring_buf, sizeof(ring_buf) / sizeof(uint32_t));
 

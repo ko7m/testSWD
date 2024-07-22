@@ -54,7 +54,7 @@ int main(void) {
     PRINTF("Flash is currently %sblank\n", val ? "" : "non-");
 
     PRINTF("Writing binary to flash flash\n");
-    for (int i = 0; i < sizeof(records) / sizeof(records[0]); i++) {
+    for (uint32_t i = 0; i < sizeof(records) / sizeof(records[0]); i++) {
     	PRINTF("%3d ", i);
 		nrf5_flash_init(records[i].address, (uint32_t) records[i].length);
 		val = nrf5_flash_write((const uint32_t *) records[i].data, records[i].length);

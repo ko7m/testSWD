@@ -2,7 +2,7 @@
 //
 // Hand decompiled M4 code.  C code sets up registers thusly:
 // R0 - length of data to be flashed in bytes
-// R1 - 0x20002ff8
+// R1 - 0x20002ff8 - points to the ring buffer write and read pointers
 // R2 - 0x20004000 - end of SRAM buffer
 // R3 - 0x00000000 - first byte of flash
 //
